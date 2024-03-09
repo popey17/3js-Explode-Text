@@ -55,7 +55,7 @@ fontLoader.load(
             }
         )
         const textGeometry2 = new TextGeometry(
-            'by @leoChen',
+            'by @LeoChen',
             {
                 font: font,
                 size: 0.7,
