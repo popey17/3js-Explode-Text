@@ -152,10 +152,10 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.rotation.y = 0.1
-camera.position.x = 0.5
-camera.position.y = 0
-camera.position.z = 3
+// camera.rotation.y = 0.1
+// camera.position.x = 0.5
+// camera.position.y = 0
+// camera.position.z = 2
 
 scene.add(camera)
 
@@ -201,17 +201,15 @@ const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()    
-
-
-    console.log(21 - Math.cos(cursor.x * Math.PI) * 20);
     if (isMobile) {
-        camera.position.x = Math.sin(cursor.x * Math.PI) * 8;
-        camera.position.z = 22 - Math.cos(cursor.x * Math.PI) * 17;
+        gsap.to(camera.position, {x: Math.sin(cursor.x * Math.PI) * 6, duration: 2});
+        gsap.to(camera.position, {z: 18 - Math.cos(cursor.x * Math.PI) * 13, duration: 2});
     }else {
-        camera.position.x = Math.sin(cursor.x * Math.PI) * 5;
-        camera.position.z =  8 - Math.cos(cursor.x * Math.PI) * 5;
+        gsap.to(camera.position, {x: Math.sin(cursor.x * Math.PI) * 5, duration: 2});
+        gsap.to(camera.position, {z: 9 - Math.cos(cursor.x * Math.PI) * 5, duration: 2});
+        console.log(camera.position.z);
     }
-    camera.position.y = cursor.y * 10;
+    gsap.to(camera.position, {y: cursor.y * 10, duration: 2});
     camera.lookAt(scene.position);
 
     // Update controls
