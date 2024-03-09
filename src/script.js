@@ -55,7 +55,7 @@ fontLoader.load(
             }
         )
         const textGeometry2 = new TextGeometry(
-            'by @LeoChen',
+            'by Leo',
             {
                 font: font,
                 size: 0.7,
@@ -196,15 +196,21 @@ window.addEventListener('touchmove', (event) => {
  * Animate
  */
 const clock = new THREE.Clock()
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()    
 
 
-    camera.position.x = Math.sin(cursor.x * Math.PI) * 5;
-    camera.position.z = Math.cos(cursor.x * Math.PI) * 5;
-    console.log(camera.position.z);
+    console.log(21 - Math.cos(cursor.x * Math.PI) * 20);
+    if (isMobile) {
+        camera.position.x = Math.sin(cursor.x * Math.PI) * 8;
+        camera.position.z = 22 - Math.cos(cursor.x * Math.PI) * 17;
+    }else {
+        camera.position.x = Math.sin(cursor.x * Math.PI) * 5;
+        camera.position.z =  8 - Math.cos(cursor.x * Math.PI) * 5;
+    }
     camera.position.y = cursor.y * 10;
     camera.lookAt(scene.position);
 
